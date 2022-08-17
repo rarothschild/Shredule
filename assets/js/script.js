@@ -1,8 +1,8 @@
 var api_key = "9a890473fa5b28d71ed016387dd3738c"
+
 var currentWeatherEl = document.getElementById("currentWeather")  // container for injecting current weather elements
 var forecastWeatherEl = document.getElementById("forecastWeather")  // container for injecting forecast weather elements
 var searchBarEl = document.getElementById("searchBar")  // container for injecting search history
-
 var searchBtn = document.getElementById("search")  // button for exe search
 
 
@@ -246,7 +246,7 @@ function get_weather(city) {
 }
 
 searchBtn.addEventListener("click", function(event) {
-    var city = document.getElementById("cityInput").value  // input for city search
+    var city = document.getElementById("citySelect").value  // input for city search
     if (city) {
         get_weather(city) 
     } else {

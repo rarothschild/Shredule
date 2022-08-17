@@ -39,3 +39,7 @@ ol,
 ul {
   list-style: none;
 }
+
+.formCityInput {
+  max-width: 25%;
+}

@@ -13,17 +13,46 @@
 </head>
 <body>
 
-  <div class="field">
-    <label class="label">Enter City</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="City">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box">
+        <div class="field" >
+          <label class="label">Enter City</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="City" id="citySelect">
+          </div>
+          <div class="control">
+            <button class="button is-link" id="search">Submit</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-    
-   <div class="container" id="currentWeather"></div>
-   <div class="container" id="forecastWeather"></div>
-   <canvas id="myChart" width="400" height="400"></canvas>
 
+  <div class="columns">
+    <div class="column is-half">
+      <div class="box">
+        <div class="container" id="currentWeather"></div>
+      </div>
+    </div>
+    <div class="column is-half">
+      <div class="box">
+        <div class="container" id="sportInfo">
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-full">
+      <div class="box">
+        <div class="container" id="forecastWeather"></div>
+      </div>
+    </div>
+  </div>
+  
   <script src="./assets/js/script.js"></script>
+
 </body>
 </html>
