@@ -13,35 +13,17 @@
 </head>
 <body>
 
-    <section class="section">
-        <div class="container" id="searchBar">
-          <h1 class="title">
-            Weather Dashboard
-          </h1>
-          <p id="cityTitle" class="subtitle">
-            Search a city to view weather
-          </p>
-
-          <div class="field has-addons">
-            <div class="control">
-              <input id="cityInput" class="input" type="text" placeholder="City">
-            </div>
-            <div class="control">
-              <button id="search" class="button is-success">
-                Search
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </section>
+  <div class="field">
+    <label class="label">Enter City</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="City">
+    </div>
+  </div>
     
-      <div class="container" id="currentWeather"></div>
-      <div class="container" id="forecastWeather"></div>
-      <canvas id="myChart" width="400" height="400"></canvas>
+   <div class="container" id="currentWeather"></div>
+   <div class="container" id="forecastWeather"></div>
+   <canvas id="myChart" width="400" height="400"></canvas>
 
-
-
-    <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
