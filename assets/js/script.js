@@ -2,7 +2,6 @@ var api_key = "9a890473fa5b28d71ed016387dd3738c"
 var currentWeatherEl = document.getElementById("currentWeather")  // container for injecting current weather elements
 var forecastWeatherEl = document.getElementById("forecastWeather")  // container for injecting forecast weather elements
 var searchBarEl = document.getElementById("searchBar")  // container for injecting search history
-
 var searchBtn = document.getElementById("search")  // button for exe search
 
 
@@ -52,7 +51,7 @@ function get_weather(city) {
             var lon = cityObj.lon 
             var state = cityObj.state
             var country = cityObj.country
-            var part = 'minutely,hourly,alerts'
+            var part = 'minutely,alerts'
             var units = 'imperial'
             var url_weather = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=${units}&appid=${api_key}`
             console.log("URL", url_weather)
@@ -149,6 +148,66 @@ function get_weather(city) {
                 // add card to container
                 currentWeatherEl.appendChild(card)
 
+                // ----------------
+                // get sunrise, sunset times from current, convert to hour
+                var sunrise_unix_0 = data.current['sunrise']
+                var sunset_unix_0 = data. current['sunset']
+
+                // convert unix to hour
+                //https://day.js.org/docs/en/display/format
+                var sunrise_hr_0 = Number(dayjs.unix(sunrise_unix_0).format("H"))
+                var sunset_hr_0 = Number(dayjs.unix(sunset_unix_0).format("H"))
+                console.log(sunrise_hr_0)
+                console.log(sunset_hr_0)
+
+
+                // create array of hours from sunrise to sunset
+                // Array.from(new Array(sunset_hr_0), (x, i) => i + sunrise_hr_0);
+
+                // create object to fill with hourly parameters
+                var hourly_data = []
+                var hourly_sailing_rec_label = []
+                var hourly_sailing_rec_data = []
+
+
+                // loop through hourly data from sunrise to sunset
+                for (var i = sunrise_hr_0; i < sunset_hr_0; i++){
+
+                    // get hourly data from object
+                    var temp_0 = data.hourly[i].temp
+                    var wind_0 = data.hourly[i].wind_speed
+                    var wind_deg_0 = data.hourly[i].wind_deg
+                    var wind_gust_0 = data.hourly[i].wind_gust
+                    var clouds_0 = data.hourly[i].clouds
+                    var sailing_rec_0 = 0;
+
+                    // todo create function to assess activty 
+                    if (temp_0 > 80 && temp_0 < 60) {
+                        sailing_rec_0 = 1
+                    } else if (wind_0 > 10 && wind_0 < 20) {
+                        sailing_rec_0 = 1
+                    } else if (clouds_0 < 1) {
+                        sailing_rec_0 = 1
+                    }
+                    
+                    var weather = {"hour": i, "temp": temp_0, "wind_speed": wind_0 , "wind_deg": wind_deg_0 , "wind_gust": wind_gust_0, "clouds": clouds_0, "sailing_rec": sailing_rec_0}
+                    hourly_data.push(weather)
+
+                    hourly_sailing_rec_label.push(i)
+                    hourly_sailing_rec_data.push(sailing_rec_0)
+
+
+
+                };
+
+                console.log(hourly_data)
+                console.log(hourly_sailing_rec_label)
+                console.log(hourly_sailing_rec_data)
+
+
+
+
+
                 // set title for 5 day forecast
                 forecastWeatherEl.textContent = ""
                 newEl = document.createElement("h2")
@@ -244,6 +303,8 @@ function get_weather(city) {
             })
         })    
 }
+
+
 
 searchBtn.addEventListener("click", function(event) {
     var city = document.getElementById("cityInput").value  // input for city search
