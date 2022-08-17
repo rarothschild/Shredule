@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+</head>
+<body>
+
+    <section class="section">
+        <div class="container" id="searchBar">
+          <h1 class="title">
+            Weather Dashboard
+          </h1>
+          <p id="cityTitle" class="subtitle">
+            Search a city to view weather
+          </p>
+
+          <div class="field has-addons">
+            <div class="control">
+              <input id="cityInput" class="input" type="text" placeholder="City">
+            </div>
+            <div class="control">
+              <button id="search" class="button is-success">
+                Search
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    
+      <div class="container" id="currentWeather"></div>
+      <div class="container" id="forecastWeather"></div>
+
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

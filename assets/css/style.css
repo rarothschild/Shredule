@@ -1,0 +1,8 @@
+.link:hover {
+    color: blue;
+}
+
+* {
+    padding: 1%;
+    margin: 1%;
+}
